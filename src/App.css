@@ -1,0 +1,12 @@
+:root {
+    --red-color: #ff2800;
+    --grey-color: #3a3e3b;
+    --white-color: #f0eff4;
+    --blue-color: #011627;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+  }
