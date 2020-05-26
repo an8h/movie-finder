@@ -20,7 +20,7 @@ export function getGenres() {
     const response = await ApiConnect.getGenres();
     dispatch({
       type:
-        response.status === 200
+        response[0].status && response[1].status === 200
           ? 'GET_GENRES_SUCCESS'
           : 'GET_GENRES_FAIL',
       genres: response,

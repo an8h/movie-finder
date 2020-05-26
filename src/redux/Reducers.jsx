@@ -41,7 +41,14 @@ export function genres(state = DefaultState.genres, action) {
     case 'GET_GENRES_SUCCESS':
       return {
         ...state,
-        id: action.genres.data.genres,
+        family: {
+          totalPages: action.genres[0].data.total_pages,
+          data: action.genres[0].data.results,
+        },
+        documentary: {
+          totalPages: action.genres[1].data.total_pages,
+          data: action.genres[1].data.results,
+        },
         isLoading: false,
         errors: [],
       };

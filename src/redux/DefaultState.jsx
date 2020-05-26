@@ -5,7 +5,14 @@ export default {
     errors: [],
   },
   genres: {
-    id: 0,
+    family: {
+      totalPages: 1,
+      data: [],
+    },
+    documentary: {
+      totalPages: 1,
+      data: [],
+    },
     isLoading: false,
     errors: [],
   },
