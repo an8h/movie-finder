@@ -1,0 +1,14 @@
+:local(.container) {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+:local(.horizontalRow) {
+    flex-direction: row;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    float: none;
+    height: 100%;
+}

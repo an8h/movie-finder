@@ -1,0 +1,11 @@
+:local(.buttonCard) {
+    border: none;
+}
+:local(.cardTitle) {
+    width: 185px;
+}
+:local(.cardTitle) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
