@@ -32,6 +32,13 @@ module.exports = {
         include: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[hash].[ext]',
+        },
+      },
     ],
   },
   resolve: {
