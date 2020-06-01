@@ -2,12 +2,12 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable camelcase */
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { mapDispachToProps } from '../../redux/Store';
 import Slider from '../Slider/index';
 import styles from './style.css';
-import DetailPage from '../DetailPage/index';
 
 class Home extends React.Component {
   constructor() {
@@ -29,11 +29,11 @@ class Home extends React.Component {
     getPopularSeries();
   }
 
-  handleClick(item, postersToShow) {
+  handleClick(item, posterToShow) {
     this.setState({
       clicked: true,
       clickedItem: item,
-      postersToShow,
+      posterToShow,
     });
   }
 
@@ -87,7 +87,7 @@ class Home extends React.Component {
       return item.title;
     });
     const { clicked } = this.state;
-    const { postersToShow } = this.state;
+    const { posterToShow } = this.state;
 
     return (
       <div className={styles.container}>
@@ -138,9 +138,12 @@ class Home extends React.Component {
           ))}
         </div>
         {clicked ? (
-          <DetailPage
-            clickedItem={clickedItem}
-            postersToShow={postersToShow}
+          <Redirect
+            push
+            to={{
+              pathname: '/detail',
+              state: { clickedItem, posterToShow, clicked },
+            }}
           />
         ) : null}
       </div>
