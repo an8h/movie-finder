@@ -44,7 +44,15 @@ const DetailPage = (props) => {
         </Button>
       </div>
       <img className={styles.image} src={posterToShow} alt={title} />
-      {clicked ? <Redirect push to="/watchVideo" /> : null}
+      {clicked ? (
+        <Redirect
+          push
+          to={{
+            pathname: '/watchVideo',
+            state: { posterToShow },
+          }}
+        />
+      ) : null}
     </div>
   );
 };
