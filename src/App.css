@@ -1,8 +1,9 @@
 :root {
-    --red-color: #ff2800;
+    --green-color: #90cea1;
     --grey-color: #3a3e3b;
     --white-color: #f0eff4;
-    --blue-color: #011627;
+    --light-blue-color: #01b4e4;
+    --blue-color: #0d253f;
   }
   html {
     height: 100%;

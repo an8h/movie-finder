@@ -1,9 +1,7 @@
 footer {
-    background-color: var(--blue-color);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 5px 0;
+  background-color: var(--blue-color);
+  flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+  padding: 20px;
   }
   
   :local(.text) {

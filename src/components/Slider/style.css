@@ -1,12 +1,13 @@
 :local(.buttonCard) {
     border: none;
     width: 200px;
+    background-color: var(--white-color);
 }
 :local(.cardTitle) {
     width: 185px;
-}
-:local(.cardTitle) {
+    margin-top: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--light-blue-color);
 }

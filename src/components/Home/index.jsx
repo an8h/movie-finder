@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable camelcase */
@@ -8,6 +9,8 @@ import { connect } from 'react-redux';
 import { mapDispachToProps } from '../../redux/Store';
 import Slider from '../Slider/index';
 import styles from './style.css';
+import Footer from '../Footer/index';
+import logo from '../../img/logo.svg';
 
 class Home extends React.Component {
   constructor() {
@@ -90,62 +93,86 @@ class Home extends React.Component {
     const { posterToShow } = this.state;
 
     return (
-      <div className={styles.container}>
-        <div className={styles.categoryTitle}>Popular Movies</div>
-        <div className={styles.horizontalRow}>
-          {moviesPosterPath.map((moviePosterPath, index) => (
-            <Slider
-              key={popularMoviesData[index].id}
-              postersToShow={moviePosterPath}
-              title={moviesTitle[index]}
-              onClick={() =>
-                this.handleClick(
-                  popularMoviesData[index],
-                  moviePosterPath,
-                )
-              }
+      <div>
+        <div className={styles.container}>
+          <div>
+            <img className={styles.logo} src={logo} />
+          </div>
+          <h1 className={styles.categoryTitle}>Popular Movies</h1>
+          <div className={styles.horizontalRow}>
+            {moviesPosterPath.map((moviePosterPath, index) => (
+              <Slider
+                key={popularMoviesData[index].id}
+                postersToShow={moviePosterPath}
+                title={moviesTitle[index]}
+                onClick={() =>
+                  this.handleClick(
+                    popularMoviesData[index],
+                    moviePosterPath,
+                  )
+                }
+              />
+            ))}
+          </div>
+          <h1 className={styles.categoryTitle}>Popular Series</h1>
+          <div className={styles.horizontalRow}>
+            {seriesPosterPath.map((moviePosterPath, index) => (
+              <Slider
+                key={popularSeriesData[index].id}
+                postersToShow={moviePosterPath}
+                title={seriesTitle[index]}
+                onClick={() =>
+                  this.handleClick(
+                    popularSeriesData[index],
+                    moviePosterPath,
+                  )
+                }
+              />
+            ))}
+          </div>
+          <h1 className={styles.categoryTitle}>Family</h1>
+          <div className={styles.horizontalRow}>
+            {familyPosterPath.map((genrePosterPath, index) => (
+              <Slider
+                key={familyGenreData[index].id}
+                postersToShow={genrePosterPath}
+                title={familyTitle[index]}
+                onClick={() =>
+                  this.handleClick(
+                    familyGenreData[index],
+                    genrePosterPath,
+                  )
+                }
+              />
+            ))}
+          </div>
+          <h1 className={styles.categoryTitle}>Documentary</h1>
+          <div className={styles.horizontalRow}>
+            {documentaryPosterPath.map((genrePosterPath, index) => (
+              <Slider
+                key={documentaryGenreData[index].id}
+                postersToShow={genrePosterPath}
+                title={documentaryTitle[index]}
+                onClick={() =>
+                  this.handleClick(
+                    documentaryGenreData[index],
+                    genrePosterPath,
+                  )
+                }
+              />
+            ))}
+          </div>
+          {clicked ? (
+            <Redirect
+              push
+              to={{
+                pathname: '/detail',
+                state: { clickedItem, posterToShow, clicked },
+              }}
             />
-          ))}
+          ) : null}
         </div>
-        <div className={styles.categoryTitle}>Popular Series</div>
-        <div className={styles.horizontalRow}>
-          {seriesPosterPath.map((moviePosterPath, index) => (
-            <Slider
-              key={popularSeriesData[index].id}
-              postersToShow={moviePosterPath}
-              title={seriesTitle[index]}
-            />
-          ))}
-        </div>
-        <div className={styles.categoryTitle}>Family</div>
-        <div className={styles.horizontalRow}>
-          {familyPosterPath.map((genrePosterPath, index) => (
-            <Slider
-              key={familyGenreData[index].id}
-              postersToShow={genrePosterPath}
-              title={familyTitle[index]}
-            />
-          ))}
-        </div>
-        <div className={styles.categoryTitle}>Documentary</div>
-        <div className={styles.horizontalRow}>
-          {documentaryPosterPath.map((genrePosterPath, index) => (
-            <Slider
-              key={documentaryGenreData[index].id}
-              postersToShow={genrePosterPath}
-              title={documentaryTitle[index]}
-            />
-          ))}
-        </div>
-        {clicked ? (
-          <Redirect
-            push
-            to={{
-              pathname: '/detail',
-              state: { clickedItem, posterToShow, clicked },
-            }}
-          />
-        ) : null}
+        <Footer />
       </div>
     );
   }
