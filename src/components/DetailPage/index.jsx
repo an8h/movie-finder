@@ -6,6 +6,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { Button } from 'reactstrap';
 import styles from './style.css';
+import fallbackPoster from '../../img/no-image-icon-23494.png';
 
 const DetailPage = (props) => {
   const { location } = props;
@@ -20,7 +21,15 @@ const DetailPage = (props) => {
 
   return (
     <div className={styles.container}>
-      <img className={styles.image} src={posterToShow} alt={title} />
+      <img
+        className={styles.image}
+        src={posterToShow}
+        alt={title}
+        onError={(e) => {
+          e.target.src = fallbackPoster;
+          e.target.style = 'object-fit: contain;';
+        }}
+      />
       <div className={styles.text}>
         <h2>{title}</h2>
         <p>{overview}</p>
