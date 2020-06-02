@@ -20,6 +20,7 @@ const DetailPage = (props) => {
 
   return (
     <div className={styles.container}>
+      <img className={styles.image} src={posterToShow} alt={title} />
       <div className={styles.text}>
         <h2>{title}</h2>
         <p>{overview}</p>
@@ -43,7 +44,6 @@ const DetailPage = (props) => {
           Close
         </Button>
       </div>
-      <img className={styles.image} src={posterToShow} alt={title} />
       {clicked ? (
         <Redirect
           push

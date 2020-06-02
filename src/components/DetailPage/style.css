@@ -1,16 +1,27 @@
 :local(.container) {
 	padding: 20px 40px 40px;
 	display: flex;
+	flex-direction: row;
 }
 
 :local(.image) {
 	margin: 20px 20px 0 30px;
-		width: 200px;
-		object-fit: contain;
-		align-self: flex-start;
+	width: 	200px;
+	object-fit: contain;
+	align-self: flex-start;
+	border-radius: 25px;
 }
 
 :local(.text) {
-  margin: 20px 20px 0 30px;
+	margin: 20px 20px 0 30px;
 	flex: 1 1 auto;
 }
+
+@media screen and (max-width: 700px) {
+	:local(.container){
+		flex-direction: column;
+	}
+	:local(.image){
+		align-self: center;
+	}
+ }
