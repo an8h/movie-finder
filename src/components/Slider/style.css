@@ -1,5 +1,6 @@
 :local(.buttonCard) {
     border: none;
+    width: 200px;
 }
 :local(.cardTitle) {
     width: 185px;
