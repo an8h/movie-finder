@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable camelcase */
@@ -11,11 +12,19 @@ import Slider from '../Slider/index';
 import styles from './style.css';
 import Footer from '../Footer/index';
 import logo from '../../img/logo.svg';
+import { POSTER_SIZE } from '../../config';
+import {
+  getCorrectPosterSize,
+  getPosterPath,
+  getTitle,
+} from '../../utils/utils';
 
 class Home extends React.Component {
   constructor() {
     super();
     this.state = { clicked: false };
+
+    // Initializing reference to click handler
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -26,6 +35,8 @@ class Home extends React.Component {
       getPopularMovies,
       getPopularSeries,
     } = this.props;
+
+    // Make the API calls and get the needed data
     getConfig();
     getGenres();
     getPopularMovies();
@@ -56,41 +67,77 @@ class Home extends React.Component {
     const documentaryGenre = genres.documentary;
     const documentaryGenreData = documentaryGenre.data;
     const { clickedItem } = this.state;
-
-    const correctPosterSize = poster_sizes
-      ? poster_sizes.filter((item) => item === 'w185')
-      : 'w185';
-
-    const posterSize = correctPosterSize
-      ? correctPosterSize[0]
-      : 'w185';
-
-    const moviesPosterPath = popularMoviesData.map((item) => {
-      return `${base_url}${posterSize}${item.poster_path}`;
-    });
-    const moviesTitle = popularMoviesData.map((item) => {
-      return item.title;
-    });
-    const seriesPosterPath = popularSeriesData.map((item) => {
-      return `${base_url}${posterSize}${item.poster_path}`;
-    });
-    const seriesTitle = popularSeriesData.map((item) => {
-      return item.name;
-    });
-    const familyPosterPath = familyGenreData.map((item) => {
-      return `${base_url}${posterSize}${item.poster_path}`;
-    });
-    const familyTitle = familyGenreData.map((item) => {
-      return item.title;
-    });
-    const documentaryPosterPath = documentaryGenreData.map((item) => {
-      return `${base_url}${posterSize}${item.poster_path}`;
-    });
-    const documentaryTitle = documentaryGenreData.map((item) => {
-      return item.title;
-    });
     const { clicked } = this.state;
     const { posterToShow } = this.state;
+
+    const correctPosterSize = getCorrectPosterSize(poster_sizes);
+    const posterSize = correctPosterSize
+      ? correctPosterSize[0]
+      : POSTER_SIZE;
+
+    const moviesPosterPath = getPosterPath(
+      popularMovies,
+      base_url,
+      posterSize,
+    );
+    const moviesTitle = getTitle(popularMovies);
+
+    const seriesPosterPath = getPosterPath(
+      popularSeries,
+      base_url,
+      posterSize,
+    );
+    const seriesTitle = getTitle(popularSeries);
+
+    const familyPosterPath = getPosterPath(
+      familyGenre,
+      base_url,
+      posterSize,
+    );
+    const familyTitle = getTitle(familyGenre);
+
+    const documentaryPosterPath = getPosterPath(
+      documentaryGenre,
+      base_url,
+      posterSize,
+    );
+    const documentaryTitle = getTitle(documentaryGenre);
+
+    /* The following arrays are needed for the render(). 
+    In the render() we loop through the different categories and we create the UI */
+    const posterPaths = [];
+    posterPaths.push(
+      moviesPosterPath,
+      seriesPosterPath,
+      familyPosterPath,
+      documentaryPosterPath,
+    );
+
+    const titles = [];
+    titles.push(
+      moviesTitle,
+      seriesTitle,
+      familyTitle,
+      documentaryTitle,
+    );
+
+    const categoryTitles = [
+      'Popular Movies',
+      'Popular Series',
+      'Family',
+      'Documentary',
+    ];
+
+    const dataAreLoading = [];
+    dataAreLoading.push(popularMovies, popularSeries, genres, genres);
+
+    const data = [];
+    data.push(
+      popularMoviesData,
+      popularSeriesData,
+      familyGenreData,
+      documentaryGenreData,
+    );
 
     return (
       <div>
@@ -98,70 +145,23 @@ class Home extends React.Component {
           <div>
             <img className={styles.logo} src={logo} />
           </div>
-          <h1 className={styles.categoryTitle}>Popular Movies</h1>
-          <div className={styles.horizontalRow}>
-            {moviesPosterPath.map((moviePosterPath, index) => (
-              <Slider
-                key={popularMoviesData[index].id}
-                postersToShow={moviePosterPath}
-                title={moviesTitle[index]}
-                onClick={() =>
-                  this.handleClick(
-                    popularMoviesData[index],
-                    moviePosterPath,
-                  )
-                }
-              />
-            ))}
-          </div>
-          <h1 className={styles.categoryTitle}>Popular Series</h1>
-          <div className={styles.horizontalRow}>
-            {seriesPosterPath.map((moviePosterPath, index) => (
-              <Slider
-                key={popularSeriesData[index].id}
-                postersToShow={moviePosterPath}
-                title={seriesTitle[index]}
-                onClick={() =>
-                  this.handleClick(
-                    popularSeriesData[index],
-                    moviePosterPath,
-                  )
-                }
-              />
-            ))}
-          </div>
-          <h1 className={styles.categoryTitle}>Family</h1>
-          <div className={styles.horizontalRow}>
-            {familyPosterPath.map((genrePosterPath, index) => (
-              <Slider
-                key={familyGenreData[index].id}
-                postersToShow={genrePosterPath}
-                title={familyTitle[index]}
-                onClick={() =>
-                  this.handleClick(
-                    familyGenreData[index],
-                    genrePosterPath,
-                  )
-                }
-              />
-            ))}
-          </div>
-          <h1 className={styles.categoryTitle}>Documentary</h1>
-          <div className={styles.horizontalRow}>
-            {documentaryPosterPath.map((genrePosterPath, index) => (
-              <Slider
-                key={documentaryGenreData[index].id}
-                postersToShow={genrePosterPath}
-                title={documentaryTitle[index]}
-                onClick={() =>
-                  this.handleClick(
-                    documentaryGenreData[index],
-                    genrePosterPath,
-                  )
-                }
-              />
-            ))}
-          </div>
+          {categoryTitles.map((title, index) => (
+            <div key={index}>
+              <h1 className={styles.categoryTitle}>{title}</h1>
+              <div className={styles.horizontalRow}>
+                {posterPaths[index].map((posterPath, key) => (
+                  <Slider
+                    posterToShow={posterPath}
+                    title={titles[index][key]}
+                    isLoading={dataAreLoading[index].isLoading}
+                    onClick={() =>
+                      this.handleClick(data[index][key], posterPath)
+                    }
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
           {clicked ? (
             <Redirect
               push
