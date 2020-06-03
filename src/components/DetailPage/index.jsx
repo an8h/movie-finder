@@ -53,15 +53,7 @@ const DetailPage = (props) => {
           Close
         </Button>
       </div>
-      {clicked ? (
-        <Redirect
-          push
-          to={{
-            pathname: '/watchVideo',
-            state: { posterToShow },
-          }}
-        />
-      ) : null}
+      {clicked ? <Redirect push to="/watchVideo" /> : null}
     </div>
   );
 };

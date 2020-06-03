@@ -6,9 +6,10 @@ import styles from './style.css';
 import fallbackPoster from '../../img/no-image-icon-23494.png';
 
 const Slider = (props) => {
-  const { postersToShow } = props;
+  const { posterToShow } = props;
   const { onClick } = props;
-  const { title } = props;
+  const { title = 'Title' } = props;
+
   return (
     <button
       className={styles.buttonCard}
@@ -21,7 +22,7 @@ const Slider = (props) => {
           variant="top"
           top
           height="300"
-          src={postersToShow}
+          src={posterToShow}
           onError={(e) => {
             e.target.src = fallbackPoster;
             e.target.style = 'object-fit: contain;';
@@ -34,8 +35,8 @@ const Slider = (props) => {
 };
 
 Slider.propTypes = {
-  postersToShow: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  posterToShow: PropTypes.string.isRequired,
+  title: PropTypes.string,
   onClick: PropTypes.func,
 };
 

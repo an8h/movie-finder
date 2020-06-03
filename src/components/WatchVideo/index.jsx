@@ -7,7 +7,6 @@ Importing dependencies and CSS file(s) required for UI customization
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
 import 'shaka-player/dist/controls.css';
 import styles from './style.css';
 import { VIDEO_URL } from '../../config';
@@ -78,9 +77,6 @@ class WatchMovie extends React.PureComponent {
   }
 
   render() {
-    const { location } = this.props;
-    const { state } = location;
-    const { posterToShow } = state;
     const { closeButtonClicked } = this.state;
 
     /*
@@ -92,7 +88,6 @@ class WatchMovie extends React.PureComponent {
           className={styles.video}
           autoPlay
           ref={this.videoComponent}
-          poster={posterToShow}
         >
           <track
             kind="captions"
@@ -114,7 +109,3 @@ class WatchMovie extends React.PureComponent {
 }
 
 export default WatchMovie;
-
-WatchMovie.propTypes = {
-  location: PropTypes.object.isRequired,
-};
