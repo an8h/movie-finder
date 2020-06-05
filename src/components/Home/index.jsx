@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-curly-newline */
@@ -127,9 +129,6 @@ class Home extends React.Component {
       'Documentary',
     ];
 
-    const dataAreLoading = [];
-    dataAreLoading.push(popularMovies, popularSeries, genres, genres);
-
     const data = [];
     data.push(
       popularMoviesData,
@@ -137,6 +136,20 @@ class Home extends React.Component {
       familyGenreData,
       documentaryGenreData,
     );
+
+    const dataAreLoading = [
+      popularMovies.isLoading,
+      popularSeries.isLoading,
+      genres.isLoading,
+      genres.isLoading,
+    ];
+
+    const dataLoadingNotSuccessful = [
+      popularMovies.errors,
+      popularSeries.errors,
+      genres.errors,
+      genres.errors,
+    ];
 
     return (
       <div>
@@ -148,19 +161,30 @@ class Home extends React.Component {
           {categoryTitles.map((title, index) => (
             <div key={index}>
               <h1 className={styles.categoryTitle}>{title}</h1>
-              <div className={styles.horizontalRow}>
-                {posterPaths[index].map((posterPath, key) => (
-                  <Slider
-                    key={key}
-                    posterToShow={posterPath}
-                    title={titles[index][key]}
-                    isLoading={dataAreLoading[index].isLoading}
-                    onClick={() =>
-                      this.handleClick(data[index][key], posterPath)
-                    }
-                  />
-                ))}
-              </div>
+              {dataAreLoading[index] === false &&
+              dataLoadingNotSuccessful[index].length <= 0 ? (
+                <div className={styles.horizontalRow}>
+                  {posterPaths[index].map((posterPath, key) => (
+                    <Slider
+                      key={key}
+                      posterToShow={posterPath}
+                      title={titles[index][key]}
+                      onClick={() =>
+                        this.handleClick(data[index][key], posterPath)
+                      }
+                    />
+                  ))}
+                </div>
+              ) : dataLoadingNotSuccessful[index].length <= 0 ? (
+                <div>Loading...</div>
+              ) : (
+                <div>
+                  <p>
+                    Something went wrong. Could not get {title} data.
+                    Please try again.
+                  </p>
+                </div>
+              )}
             </div>
           ))}
           {clicked ? (
