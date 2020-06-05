@@ -57,6 +57,7 @@ class SearchBar extends Component {
       >
         <div className={styles.container}>
           <input
+            className={styles.inputCustom}
             type="text"
             value={query}
             ref={(input) => (this.inputField = input)}
@@ -64,7 +65,9 @@ class SearchBar extends Component {
             onBlur={() => (this.inputField.value = 'Search for....')}
             onChange={(event) => this.setQuery(event.target.value)}
           />
-          <button type="submit">Search</button>
+          <button className={styles.buttonCustom} type="submit">
+            Search
+          </button>
         </div>
         {searchResults.length > 0 ? (
           <SearchResults
