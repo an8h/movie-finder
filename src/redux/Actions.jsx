@@ -55,3 +55,17 @@ export function getPopularSeries() {
     });
   };
 }
+
+export function getResultsFromSearch(query) {
+  return async (dispatch) => {
+    dispatch({ type: 'GET_SEARCH_RESULTS_LOADING' });
+    const response = await ApiConnect.getResultsFromSearch(query);
+    dispatch({
+      type:
+        response.status === 200
+          ? 'GET_SEARCH_RESULTS_SUCCESS'
+          : 'GET_SEARCH_RESULTS_FAIL',
+      search: response,
+    });
+  };
+}

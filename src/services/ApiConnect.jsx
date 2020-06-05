@@ -74,4 +74,11 @@ export default {
       })
       .then((res) => res)
       .catch((error) => error),
+  getResultsFromSearch: (query) =>
+    axios
+      .get(`${BASE_URL}/3/search/movie`, {
+        params: { query, api_key: API_KEY },
+      })
+      .then((res) => res.data)
+      .catch((error) => error),
 };

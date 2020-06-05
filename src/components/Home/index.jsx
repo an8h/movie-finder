@@ -8,11 +8,12 @@ import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { mapDispachToProps } from '../../redux/Store';
+import SearchBar from '../SearchBar/index';
 import Slider from '../Slider/index';
 import styles from './style.css';
 import Footer from '../Footer/index';
 import logo from '../../img/logo.svg';
-import { POSTER_SIZE } from '../../config';
+import { POSTER_SIZE, FALLBACK_IMAGE_URL } from '../../config';
 import {
   getCorrectPosterSize,
   getPosterPath,
@@ -53,9 +54,7 @@ class Home extends React.Component {
 
   render() {
     const { config } = this.props;
-    const {
-      base_url = 'https://image.tmdb.org/t/p/',
-    } = config.images;
+    const { base_url = FALLBACK_IMAGE_URL } = config.images;
     const { poster_sizes } = config.images;
     const { popularMovies } = this.props;
     const popularMoviesData = popularMovies.data;
@@ -145,12 +144,14 @@ class Home extends React.Component {
           <div>
             <img className={styles.logo} src={logo} />
           </div>
+          <SearchBar base_url={base_url} posterSize={posterSize} />
           {categoryTitles.map((title, index) => (
             <div key={index}>
               <h1 className={styles.categoryTitle}>{title}</h1>
               <div className={styles.horizontalRow}>
                 {posterPaths[index].map((posterPath, key) => (
                   <Slider
+                    key={key}
                     posterToShow={posterPath}
                     title={titles[index][key]}
                     isLoading={dataAreLoading[index].isLoading}

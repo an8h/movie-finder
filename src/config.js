@@ -5,3 +5,4 @@ export const FAMILY_GENRE = 'Family';
 export const DOCUMENTARY_GENRE = 'Documentary';
 export const VIDEO_URL =
   'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+export const FALLBACK_IMAGE_URL = 'https://image.tmdb.org/t/p/';

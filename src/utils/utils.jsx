@@ -7,14 +7,16 @@ export const getCorrectPosterSize = (poster_sizes) => {
     : POSTER_SIZE;
 };
 
-export const getPosterPath = (items, base_url, posterSize) => {
+export const getPosterPath = (items, base_url, posterSize, flag) => {
   const { data } = items;
-  return (
-    data &&
-    data.map((item) => {
-      return `${base_url}${posterSize}${item.poster_path}`;
-    })
-  );
+  return !flag
+    ? data &&
+        data.map((item) => {
+          return `${base_url}${posterSize}${item.poster_path}`;
+        })
+    : items.map((item) => {
+        return `${base_url}${posterSize}${item.poster_path}`;
+      });
 };
 
 export const getTitle = (items) => {
