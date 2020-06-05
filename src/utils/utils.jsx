@@ -24,7 +24,7 @@ export const getTitle = (items) => {
   return (
     data &&
     data.map((item) => {
-      return item.title;
+      return item.title ? item.title : item.original_name;
     })
   );
 };
