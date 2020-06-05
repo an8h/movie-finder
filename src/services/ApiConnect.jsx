@@ -1,3 +1,12 @@
+/*
+API calls for:
+Configuration
+Genres
+Popular Movies
+Popular Series
+Search 
+*/
+
 import axios from 'axios';
 import {
   BASE_URL,

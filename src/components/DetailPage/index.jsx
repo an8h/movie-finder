@@ -1,6 +1,20 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable camelcase */
 /* eslint-disable react/forbid-prop-types */
+
+/* 
+DetailPage Component: 
+It is shown when the user clicks on an item  either from the categories or 
+from the rearch results at Home page.
+Rendered UI:
+title         : The title of the clicked item
+overview      : The overview of the clicked item
+release_date  : The release date of the clicked item
+posterToShow  : The poster image of the clicked item
+Watch Video   : A button to click and go to the Watch Video Component
+Close         : A button to click and go to Home Component
+*/
+
 import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { PropTypes } from 'prop-types';

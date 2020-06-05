@@ -5,6 +5,19 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable camelcase */
+
+/* 
+Home Component: 
+It is the first shown page when the user runs the app. 
+Rendered UI:
+logo                    : The logo image of the app
+SearchBar               : The serach bar of the app an a Search Button
+title                   : The title of each shown category
+Slider                  : A Slider component for each category. When an item is clicked the DetailPage opens with the coresponding item
+div (Text "Loading...") : It is shown while the data are being fetched
+div --> p               : It is shown when there is an error on API calls
+*/
+
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
@@ -46,6 +59,7 @@ class Home extends React.Component {
     getPopularSeries();
   }
 
+  // Keep track of the clicked item. We need to pass these properties to DetailPage Component
   handleClick(item, posterToShow) {
     this.setState({
       clicked: true,

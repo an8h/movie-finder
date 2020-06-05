@@ -1,4 +1,14 @@
 /* eslint-disable react/require-default-props */
+
+/* 
+Slider Component: 
+It is shown when the data of each category are fetch at Home page.
+Rendered UI:
+button        : This is to make the whole area of the card clickable
+title         : The title of each item
+posterToShow  : The poster image of each item
+*/
+
 import React from 'react';
 import { Card, CardTitle, CardImg } from 'reactstrap';
 import { PropTypes } from 'prop-types';

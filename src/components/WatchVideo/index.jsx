@@ -1,9 +1,15 @@
 /* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/forbid-prop-types */
-/*
-Importing dependencies and CSS file(s) required for UI customization
+
+/* 
+Watch Video Component: 
+It is shown when the user clicks the Watch Video button at DetailPage Component.
+Rendered UI:
+video         : It shows a fallback video
+Button (x)    : Once clicked it goes back to the Home Page
 */
+
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom';

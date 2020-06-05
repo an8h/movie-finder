@@ -1,3 +1,6 @@
+/*
+Set up Routes for the app
+*/
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 

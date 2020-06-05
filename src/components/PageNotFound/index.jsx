@@ -1,3 +1,8 @@
+/* 
+Rendered UI of PageNotFound Component:
+h2  : A header for informing the user thar the page is not found
+*/
+
 import React from 'react';
 
 const PageNotFound = () => (

@@ -1,3 +1,6 @@
+/* 
+Set up Redux Store
+*/
 import {
   applyMiddleware,
   bindActionCreators,

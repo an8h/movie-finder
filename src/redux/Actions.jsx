@@ -1,3 +1,17 @@
+/* 
+Actions for:
+Configuration
+Genres
+Popular Movies
+Popular Series
+Results from Search
+
+Each Action has three different dispatch states:
+_LOADING
+_SUCCESS
+_FAIL
+*/
+
 import ApiConnect from '../services/ApiConnect';
 
 export function getConfig() {

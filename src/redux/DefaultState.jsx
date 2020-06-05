@@ -1,3 +1,6 @@
+/*
+Set a default state for the app
+ */
 export default {
   config: {
     images: {},

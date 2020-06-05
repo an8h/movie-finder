@@ -1,3 +1,16 @@
+/* 
+Reducers for:
+Configuration
+Genres
+Popular Movies
+Popular Series
+
+Each Reducer handles three different dispatch states:
+_LOADING
+_SUCCESS
+_FAIL
+*/
+
 import DefaultState from './DefaultState';
 
 export function config(state = DefaultState.config, action) {

@@ -1,5 +1,16 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable camelcase */
+
+/* 
+SearchBar Component: 
+It is shown in the Home page.
+Rendered UI:
+input field     : Here the user can type any keyword to search for movies/ series
+button          : A search button. When it is clicked a query string is passed to the API call and the API call starts. 
+SearchResults   : Once the API call is done and there are results a SearchResults component is shown
+p               : If there are no results for the given query a user is informed that there are no results by this <p/>
+*/
+
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import ApiConnect from '../../services/ApiConnect';
@@ -16,23 +27,27 @@ class SearchBar extends Component {
       searchButtonClicked: false,
     };
 
+    // Initializing references
     this.fetchSearchResults = this.fetchSearchResults.bind(this);
     this.setQuery = this.setQuery.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
+  // Update the query value
   setQuery(newQuery) {
     this.setState({
       query: newQuery,
     });
   }
 
+  // Call the corrensponding API with the updated query
   fetchSearchResults(value) {
     ApiConnect.getResultsFromSearch(value).then((response) =>
       this.setState({ searchResults: response.results }),
     );
   }
 
+  // This flag is needed for controling whether or not there are no any results from the last search
   handleClick(value) {
     this.setState({
       searchButtonClicked: value,

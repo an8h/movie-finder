@@ -2,6 +2,15 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/forbid-prop-types */
+
+/* 
+SearchResults Component: 
+It is shown when the user clicks on the Search Button at Home page.
+Rendered UI:
+h1      : A header for the search results
+Slider  : A Slider component for each category. When an item is clicked the DetailPage opens with the coresponding item
+*/
+
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
