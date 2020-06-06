@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailPage Component should render correctly 1`] = `
+<div
+  className="container"
+>
+  <img
+    alt="this is a clicked item"
+    className="image"
+    onError={[Function]}
+    src="http://image.tmdb.org/t/p/w185/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg"
+  />
+  <div
+    className="text"
+  >
+    <h2>
+      this is a clicked item
+    </h2>
+    <p>
+      this is an overview of the clicked item
+    </p>
+    <h3>
+      Release date: 
+      2020-03-05
+    </h3>
+    <button
+      aria-label={null}
+      className="btn btn-primary btn-lg"
+      onClick={[Function]}
+      type="button"
+    >
+      Watch Video
+    </button>
+     
+    <button
+      aria-label={null}
+      className="btn btn-secondary btn-lg"
+      onClick={[Function]}
+      type="button"
+    >
+      Close
+    </button>
+  </div>
+</div>
+`;

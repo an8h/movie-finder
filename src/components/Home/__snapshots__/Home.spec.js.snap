@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component should render with given state from Redux store 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div>
+      <img
+        className="logo"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+      />
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="container"
+      >
+        <input
+          className="inputCustom"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="Search for...."
+        />
+        <button
+          className="buttonCustom"
+          type="submit"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+    <div>
+      <h1
+        className="categoryTitle"
+      >
+        Popular Movies
+      </h1>
+      <div
+        className="horizontalRow"
+      />
+    </div>
+    <div>
+      <h1
+        className="categoryTitle"
+      >
+        Popular Series
+      </h1>
+      <div
+        className="horizontalRow"
+      />
+    </div>
+    <div>
+      <h1
+        className="categoryTitle"
+      >
+        Family
+      </h1>
+      <div
+        className="horizontalRow"
+      />
+    </div>
+    <div>
+      <h1
+        className="categoryTitle"
+      >
+        Documentary
+      </h1>
+      <div
+        className="horizontalRow"
+      />
+    </div>
+  </div>
+  <footer>
+    <div
+      className="text"
+    >
+      Powered by Anthoula Alipasali
+    </div>
+  </footer>
+</div>
+`;
