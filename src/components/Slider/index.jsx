@@ -13,7 +13,7 @@ import React from 'react';
 import { Card, CardTitle, CardImg } from 'reactstrap';
 import { PropTypes } from 'prop-types';
 import styles from './style.css';
-import fallbackPoster from '../../img/no-image-icon-23494.png';
+import fallbackPoster from '../../../img/no-image-icon-23494.png';
 
 const Slider = (props) => {
   const { posterToShow } = props;

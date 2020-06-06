@@ -27,7 +27,7 @@ import SearchBar from '../SearchBar/index';
 import Slider from '../Slider/index';
 import styles from './style.css';
 import Footer from '../Footer/index';
-import logo from '../../img/logo.svg';
+import logo from '../../../img/logo.svg';
 import { POSTER_SIZE, FALLBACK_IMAGE_URL } from '../../config';
 import {
   getCorrectPosterSize,

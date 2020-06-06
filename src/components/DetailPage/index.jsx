@@ -20,7 +20,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { Button } from 'reactstrap';
 import styles from './style.css';
-import fallbackPoster from '../../img/no-image-icon-23494.png';
+import fallbackPoster from '../../../img/no-image-icon-23494.png';
 
 const DetailPage = (props) => {
   const { location } = props;
